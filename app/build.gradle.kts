@@ -45,15 +45,12 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.7.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
-    // Firebase Authentication
-    implementation("com.google.firebase:firebase-auth:23.1.0")
+    // Firebase Authenticatio
 
     // Google Sign-In (Autenticação com Google)
     implementation("com.google.android.gms:play-services-auth:21.2.0")
-
-    // Firebase Realtime Database
-    implementation("com.google.firebase:firebase-database:21.0.0")
-    implementation(libs.androidx.activity)
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.database.ktx)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

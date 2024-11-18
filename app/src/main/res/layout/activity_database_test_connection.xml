@@ -1,12 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/test_text"
-        android:layout_width="wrap_content"
+    <!-- Campo para Nome -->
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Conectando ao Firebase..." />
+        android:hint="Nome"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Campo para Idade -->
+    <EditText
+        android:id="@+id/etAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Idade"
+        android:inputType="number"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Campo para Email -->
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Botão para Adicionar Dados -->
+    <Button
+        android:id="@+id/btnAddData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Pessoa" />
+
+    <!-- Campo para Buscar Pessoa -->
+    <EditText
+        android:id="@+id/etSearchName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Buscar pelo Nome"
+        android:layout_marginTop="16dp" />
+
+    <!-- Botão para Buscar Dados -->
+    <Button
+        android:id="@+id/btnSearchData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Buscar Pessoa" />
+
 </LinearLayout>
