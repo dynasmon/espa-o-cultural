@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Espaco cultural</string>
+    <string name="todo">TODO</string>
+    <string name="entrar_como_administrador">Entrar como Administrador</string>
+    <string name="entrar_como_visitante">Entrar como Visitante</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="cadastre_se">Cadastre-se</string>
+    <string name="n_o_tem_uma_conta">Não tem uma conta?</string>
+    <string name="entrar">Entrar</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="j_tem_uma_conta">Já tem uma conta?</string>
+    <string name="entre">Entre</string>
+    <string name="cadastra_se">Cadastre-se</string>
+    <string name="toggle_password_visibility" />
+    <string name="caravaggio_na_incredulidade_de_s_o_tom_1931">Caravaggio\nA Incredulidade de São Tomé, 1931</string>
+    <string name="michelangelo_npiet_1499">Michelangelo\nPietà, 1499</string>
+    <string name="fernando_botero_nle_sorelle_1968">Fernando Botero\nLe sorelle, 1968</string>
+    <string name="basquiat_ntrumpet_1984">Basquiat\nTrumpet, 1984</string>
+    <string name="di_cavalcanti_nbahia_1935">Di Cavalcanti\nBahia, 1935</string>
+    <string name="tarsila_do_amaral_npaisagem_1931">Tarsila do Amaral\nPaisagem, 1931</string>
+    <string name="obras">Obras</string>
+    <string name="obras1">Obras:</string>
+    <string name="pesquisar">Pesquisar</string>
+    <string name="visitante">Visitante</string>
+    <string name="voltar">voltar</string>
+    <string name="tamanho_das_letras">Tamanho das Letras</string>
+    <string name="configura_o">Configuração</string>
+    <string name="aa">Aa</string>
+    <string name="ativar_notifica_es">Ativar notificações</string>
+    <string name="tema_escuro">Tema escuro</string>
+    <string name="reportar_erro">Reportar erro</string>
+    <string name="descreva_o_problema">Descreva o problema</string>
+    <string name="enviar">Enviar</string>
+    <string name="bem_vindo">Bem-vindo</string>
+</resources>
