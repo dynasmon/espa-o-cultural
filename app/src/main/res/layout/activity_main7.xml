@@ -291,7 +291,6 @@
                 android:orientation="horizontal">
 
                 <GridLayout
-                    android:id="@+id/grid_layout3"
                     android:layout_width="383dp"
                     android:layout_height="201dp"
                     android:columnCount="2"
