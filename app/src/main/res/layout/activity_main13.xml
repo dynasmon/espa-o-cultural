@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Top Bar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#002776"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/icon_profile"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/account_circle"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/visitor_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visitante"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/brazil_flag"
+            android:layout_width="62dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_brazil_flag" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Scroll View -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/bottom_bar"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="Quadro o pescador"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/_60b9171090f0b1a2b318c37f27699ad" />
+
+                <View
+                    android:id="@+id/roundedRectangle"
+                    android:layout_width="0dp"
+                    android:layout_height="540dp"
+                    android:layout_marginTop="-50dp"
+                    android:background="@drawable/rounded_post"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imageView4" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    app:layout_constraintEnd_toEndOf="@id/roundedRectangle"
+                    app:layout_constraintStart_toStartOf="@id/roundedRectangle"
+                    app:layout_constraintTop_toTopOf="@id/roundedRectangle">
+
+                    <TextView
+                        android:id="@+id/titleTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="O pescador"
+                        android:textColor="#002776"
+                        android:textSize="40sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/subtitleTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Tarsila Do Amaral, 1925"
+                        android:textColor="#849AC5"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/descriptionTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/bottombar"
+                        android:text="No quadro O pescador vemos um único personagem principal no centro da tela com uma paisagem ao fundo construída a partir de traços simples e árvores tropicais (repare nas palmeiras e no contorno das folhas). O pescador é flagrado por Tarsila no seu momento de sucesso, com um peixe na rede."
+                        android:textColor="#002776"
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:id="@+id/buttonBR"
+                        android:layout_width="65dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="1dp"
+                        android:backgroundTint="#0C66E4"
+                        android:padding="5dp"
+                        android:text="🇧🇷"
+                        android:textColor="#00E676"
+                        android:textSize="20sp"
+                        app:cornerRadius="10dp"
+                        tools:ignore="HardcodedText,TextContrastCheck" />
+
+                    <Button
+                        android:id="@+id/buttonUS"
+                        android:layout_width="65dp"
+                        android:layout_height="50dp"
+                        android:backgroundTint="#0C66E4"
+                        android:padding="5dp"
+                        android:text="🇺🇸"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        app:cornerRadius="10dp"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Bar -->
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottombar"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/back_icon"
+            android:layout_width="60dp"
+            android:layout_height="39dp"
+            android:alpha="0.5"
+            android:src="@drawable/ic_arrow_return" />
+
+        <ImageView
+            android:id="@+id/settings_icon"
+            android:layout_width="32dp"
+            android:layout_height="39dp"
+            android:layout_weight="1"
+            android:alpha="0.5"
+            android:src="@drawable/ic_settings" />
+
+        <ImageView
+            android:id="@+id/logout_icon"
+            android:layout_width="49dp"
+            android:layout_height="39dp"
+            android:alpha="0.5"
+            android:src="@drawable/ic_logout" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

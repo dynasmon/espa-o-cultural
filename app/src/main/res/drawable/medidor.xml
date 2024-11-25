@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Parte azul -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="5dp"/> <!-- Arredondar as bordas -->
+            <solid android:color="#0000FF"/> <!-- Azul -->
+            <size android:width="50dp" android:height="10dp"/> <!-- Largura metade -->
+        </shape>
+    </item>
+
+    <!-- Parte cinza -->
+    <item android:top="0dp" android:left="50dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="5dp"/> <!-- Arredondar as bordas -->
+            <solid android:color="#CCCCCC"/> <!-- Cinza -->
+            <size android:width="50dp" android:height="10dp"/> <!-- Largura metade -->
+        </shape>
+    </item>
+</layer-list>

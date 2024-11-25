@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/todo"
+        tools:srcCompat="@drawable/_f12447d1531574b15b82ca533e6c8e5" />
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/symbol"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/bem_vindo"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button1"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcomeText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#0C66E4"
+        android:padding="10dp"
+        android:text="@string/entrar_como_administrador"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:cornerRadius="15dp"
+        tools:ignore="TextSizeCheck" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button2"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#0C66E4"
+        android:padding="10dp"
+        android:text="@string/entrar_como_visitante"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:cornerRadius="15dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonTestDatabase"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#0C66E4"
+        android:padding="10dp"
+        android:text="Ir para Teste de Conexão"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:cornerRadius="15dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonTestDatabase"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonBR"
+            android:layout_width="65dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="1dp"
+            android:backgroundTint="#0C66E4"
+            android:padding="5dp"
+            android:text="🇧🇷"
+            android:textColor="#00E676"
+            android:textSize="20sp"
+            app:cornerRadius="10dp"
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonUS"
+            android:layout_width="65dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#0C66E4"
+            android:padding="5dp"
+            android:text="🇺🇸"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:cornerRadius="10dp"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+</RelativeLayout>

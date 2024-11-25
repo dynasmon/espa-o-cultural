@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/todo"
+        tools:srcCompat="@drawable/_f12447d1531574b15b82ca533e6c8e5" />
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/symbol"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/cadastra_se"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcomeText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp" />
+
+    <RelativeLayout
+        android:id="@+id/passwordContainer"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_background"
+            android:hint="@string/senha"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/confirmPasswordContainer"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordContainer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/editConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_background"
+            android:hint="@string/confirmar_senha"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+    </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/confirmButton"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirmPasswordContainer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#0C66E4"
+        android:padding="10dp"
+        android:text="@string/confirmar"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:cornerRadius="15dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirmButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/alreadyHaveAccountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/j_tem_uma_conta" />
+
+        <TextView
+            android:id="@+id/enterText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/entre"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:onClick="goToLogin" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/backIcon_3"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:alpha="0.5"
+        android:contentDescription="@string/voltar"
+        android:src="@drawable/back200" />
+
+</RelativeLayout>
