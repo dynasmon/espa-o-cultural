@@ -33,4 +33,10 @@
     <string name="descreva_o_problema">Descreva o problema</string>
     <string name="enviar">Enviar</string>
     <string name="bem_vindo">Bem-vindo</string>
+    <string name="titulo">Título</string>
+    <string name="subtitulo">Subtítulo</string>
+    <string name="image_description">Descrição da imagem</string>
+    <string name="editar_card">Editar card</string>
+    <string name="excluir_card">Excluir card</string>
+    <string name="imagem_obra">Imagem da obra</string>
 </resources>

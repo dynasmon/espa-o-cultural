@@ -1,12 +1,13 @@
 package com.example.espacocultural
 
+import adapter.CardAdmAdapter
 import android.content.Intent
 import android.os.Bundle
-import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity7 : AppCompatActivity() {
 
@@ -17,27 +18,59 @@ class MainActivity7 : AppCompatActivity() {
     private lateinit var deletObra: ImageView
     private lateinit var imageIco: ImageView
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var cardList: MutableList<CardObra>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main7)
 
         backIcon = findViewById(R.id.back_icon)
         confIcon = findViewById(R.id.settings_icon)
-        editTela1Image = findViewById(R.id.button_edit)
-        novaObra = findViewById(R.id.addIconImageView)
-        deletObra = findViewById(R.id.button_delete)
-        imageIco = findViewById(R.id.obra1)
 
-        /// Configuração do ícone de voltar
+        // Inicializando o RecyclerView
+        recyclerView = findViewById(R.id.cardRecyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Dados para o RecyclerView
+        cardList = mutableListOf(
+            CardObra(R.drawable.tarsila, "Tarsila do Amaral", "O pescador, 1925"),
+            CardObra(R.drawable.cavalcanti, "Di Cavalcanti", "Bahia, 1935"),
+            CardObra(R.drawable.botero, "Fernando Botero", "Le soralle, 1968"),
+            CardObra(R.drawable.basquiat, "Basquiat", "Trumpet, 1984")
+        )
+
+        // Configurando o RecyclerView com o Adapter
+        recyclerView.adapter = CardAdmAdapter(
+            cardList,
+            onEditClick = { card ->
+                val intent = Intent(this, MainActivity8::class.java)
+                // Passando as informações para edição
+                intent.putExtra("imageResId", card.imageResId)
+                intent.putExtra("title", card.title)
+                intent.putExtra("subtitle", card.subtitle)
+                startActivity(intent)
+            },
+            onDeleteClick = { card ->
+                val dialog = AlertDialog.Builder(this)
+                dialog.setMessage("Você tem certeza que deseja deletar este item?")
+                    .setPositiveButton("Sim") { _, _ ->
+                        cardList.remove(card)
+                        recyclerView.adapter?.notifyDataSetChanged()
+                    }
+                    .setNegativeButton("Não", null)
+                dialog.show()
+            }
+        )
+
+        // Configuração do ícone de voltar
         backIcon.setOnClickListener {
-            // Volta para a tela MainActivity
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
-        /// config
+        // Configuração do ícone de configurações
         confIcon.setOnClickListener {
-            // Vai para a tela config
             val intent = Intent(this, MainActivity11::class.java)
             startActivity(intent)
         }
@@ -73,10 +106,9 @@ class MainActivity7 : AppCompatActivity() {
         // Obtenha a ImageView do layout do dialog
         val imageView = dialogView.findViewById<ImageView>(R.id.dialog_image)
         imageView.setOnClickListener {
-            // Quando a imagem for clicada, inicie a nova atividade
-            val intent = Intent(this, MainActivity12::class.java) // Substitua NovaAtividade pela sua atividade de destino
+            val intent = Intent(this, MainActivity12::class.java)
             startActivity(intent)
-            dialog.dismiss() // Fecha o dialog após iniciar a nova atividade
+            dialog.dismiss()
         }
 
         dialog.show()

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Imagem do lado esquerdo -->
+        <ImageView
+            android:id="@+id/card_image"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/imagem_obra"/>
+
+        <!-- Conteúdo do lado direito -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/card_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/titulo"
+                android:textColor="#002776"
+                android:textSize="16sp"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/card_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/subtitulo"
+                android:textColor="#849AC5"
+                android:textSize="15sp"
+                android:paddingBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/card_edit_button"
+                    android:layout_width="75dp"
+                    android:layout_height="51dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/edit_button_style"
+                    android:padding="12dp"
+                    android:src="@drawable/blue_edit"
+                    android:contentDescription="@string/editar_card"/>
+
+                <ImageButton
+                    android:id="@+id/card_delete_button"
+                    android:layout_width="75dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/rounded_corners"
+                    android:backgroundTint="#E64646"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_delete"
+                    android:contentDescription="@string/excluir_card"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
