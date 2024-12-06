@@ -83,10 +83,9 @@
 
             <!-- Campo de texto do artista -->
             <TextView
-                android:id="@+id/textViewArtist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="16dp"
                 android:text="Nome do Artista"
                 android:textColor="#002776" />
 
@@ -95,15 +94,15 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editObraAuthor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="Digite o nome do artista"
                     android:textColor="#002776"
                     android:textColorHint="#002776" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Campo de texto adicional -->
             <TextView
-                android:id="@+id/textViewArtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -186,9 +185,9 @@
                         android:text="Adicionar mídia URL"
                         android:textColor="#002776" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
@@ -247,5 +246,4 @@
             android:alpha="0.5"
             android:src="@drawable/ic_logout" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

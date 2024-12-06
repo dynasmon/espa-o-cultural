@@ -2,7 +2,6 @@ package com.example.espacocultural
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -68,5 +67,26 @@ class MainActivity2 : AppCompatActivity() {
             }
             editPassword.setSelection(editPassword.text.length)
         }
+    }
+
+    private fun loginUser(email: String, password: String) {
+        // Consultar Firestore para verificar se o email e senha correspondem
+        firestore.collection("admin_users")
+            .whereEqualTo("email", email)
+            .whereEqualTo("senha", password)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    Toast.makeText(this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainActivity7::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, "Email ou senha incorretos.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Erro ao verificar login: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 }

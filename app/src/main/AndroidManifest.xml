@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EspacoCultural"
         tools:targetApi="31">
+
+        <!-- Define MainActivity como a atividade inicial -->
         <activity
             android:name=".MainActivity13"
             android:exported="false" />
@@ -48,7 +50,8 @@
         <activity
             android:name=".MainActivity2"
             android:exported="false" />
-        <activity android:name=".DatabaseTestConnection"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,6 +59,20 @@
             </intent-filter>
         </activity>
 
+        <!-- Outras atividades do aplicativo -->
+        <activity android:name=".MainActivity13" android:exported="false" />
+        <activity android:name=".MainActivity12" android:exported="false" />
+        <activity android:name=".MainActivity11" android:exported="false" />
+        <activity android:name=".MainActivity10" android:exported="false" />
+        <activity android:name=".MainActivity9" android:exported="true" />
+        <activity android:name=".MainActivity8" android:exported="false" />
+        <activity android:name=".MainActivity7" android:exported="false" />
+        <activity android:name=".MainActivity6" android:exported="false" />
+        <activity android:name=".MainActivity5" android:exported="false" />
+        <activity android:name=".MainActivity4" android:exported="false" />
+        <activity android:name=".MainActivity3" android:exported="false" />
+        <activity android:name=".MainActivity2" android:exported="false" />
+        <activity android:name=".DatabaseTestConnection" android:exported="true" />
 
     </application>
 

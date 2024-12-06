@@ -73,7 +73,6 @@
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="5"
-                    android:inputType="text"
                     android:background="@drawable/search_border"
                     android:drawableEnd="@drawable/ic_search"
                     android:drawablePadding="8dp"
@@ -147,7 +146,6 @@
 
 
             </LinearLayout>
-
 
 
         </LinearLayout>
