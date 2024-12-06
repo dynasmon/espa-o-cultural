@@ -292,8 +292,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="182dp"
                             android:layout_weight="3"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/caravaggio___the_incredulity_of_saint_thomas" />
+                            android:scaleType="centerCrop" />
 
                         <TextView
                             android:id="@+id/artista5"
@@ -335,8 +334,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="182dp"
                             android:layout_weight="3"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/_40px_michelangelo_s_pieta_5450_cropncleaned_edit" />
+                            android:scaleType="centerCrop" />
 
                         <TextView
                             android:id="@+id/artista6"
