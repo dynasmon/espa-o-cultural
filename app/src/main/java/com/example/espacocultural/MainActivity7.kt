@@ -1,116 +1,181 @@
 package com.example.espacocultural
 
-import adapter.CardAdmAdapter
+import adapter.ObraAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.widget.EditText
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity7 : AppCompatActivity() {
 
     private lateinit var backIcon: ImageView
     private lateinit var confIcon: ImageView
-    private lateinit var editTela1Image: ImageView
-    private lateinit var novaObra: ImageView
-    private lateinit var deletObra: ImageView
-    private lateinit var imageIco: ImageView
-
+    private lateinit var addIcon: ImageView
     private lateinit var recyclerView: RecyclerView
-    private lateinit var cardList: MutableList<CardObra>
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var adapter: ObraAdapter
+    private val obrasList = mutableListOf<Obra>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main7)
 
-        backIcon = findViewById(R.id.back_icon)
-        confIcon = findViewById(R.id.settings_icon)
+        // Inicializar Firestore
+        firestore = FirebaseFirestore.getInstance()
 
-        // Inicializando o RecyclerView
+        // Configurar RecyclerView
         recyclerView = findViewById(R.id.cardRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Dados para o RecyclerView
-        cardList = mutableListOf(
-            CardObra(R.drawable.tarsila, "Tarsila do Amaral", "O pescador, 1925"),
-            CardObra(R.drawable.cavalcanti, "Di Cavalcanti", "Bahia, 1935"),
-            CardObra(R.drawable.botero, "Fernando Botero", "Le soralle, 1968"),
-            CardObra(R.drawable.basquiat, "Basquiat", "Trumpet, 1984")
+        // Configurar Adapter
+        adapter = ObraAdapter(
+            obrasList,
+            onEditClick = { obra -> showEditDialog(obra) },
+            onDeleteClick = { obra -> showDeleteDialog(obra) }
         )
+        recyclerView.adapter = adapter
 
-        // Configurando o RecyclerView com o Adapter
-        recyclerView.adapter = CardAdmAdapter(
-            cardList,
-            onEditClick = { card ->
-                val intent = Intent(this, MainActivity8::class.java)
-                // Passando as informações para edição
-                intent.putExtra("imageResId", card.imageResId)
-                intent.putExtra("title", card.title)
-                intent.putExtra("subtitle", card.subtitle)
-                startActivity(intent)
-            },
-            onDeleteClick = { card ->
-                val dialog = AlertDialog.Builder(this)
-                dialog.setMessage("Você tem certeza que deseja deletar este item?")
-                    .setPositiveButton("Sim") { _, _ ->
-                        cardList.remove(card)
-                        recyclerView.adapter?.notifyDataSetChanged()
-                    }
-                    .setNegativeButton("Não", null)
-                dialog.show()
-            }
-        )
+        // Configurar Botões
+        backIcon = findViewById(R.id.back_icon)
+        confIcon = findViewById(R.id.settings_icon)
+        addIcon = findViewById(R.id.addIconImageView2)
 
-        // Configuração do ícone de voltar
         backIcon.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
-        // Configuração do ícone de configurações
         confIcon.setOnClickListener {
-            val intent = Intent(this, MainActivity11::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity11::class.java))
         }
 
-        editTela1Image.setOnClickListener {
-            val intent = Intent(this, MainActivity8::class.java)
-            startActivity(intent)
+        addIcon.setOnClickListener {
+            showAddDialog()
         }
 
-        novaObra.setOnClickListener {
-            val intent = Intent(this, MainActivity9::class.java)
-            startActivity(intent)
-        }
-
-        imageIco.setOnClickListener {
-            val intent = Intent(this, MainActivity13::class.java)
-            startActivity(intent)
-        }
-
-        deletObra.setOnClickListener {
-            showImageDialog()
-        }
+        // Carregar obras do Firestore
+        loadObras()
     }
 
-    private fun showImageDialog() {
-        val dialogView = layoutInflater.inflate(R.layout.dialog_image, null)
-        val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setView(dialogView)
+    private fun loadObras() {
+        firestore.collection("obras")
+            .get()
+            .addOnSuccessListener { result ->
+                obrasList.clear()
+                for (document in result) {
+                    val obra = Obra(
+                        id = document.id,
+                        name = document.getString("name") ?: "",
+                        description = document.getString("description") ?: "",
+                        imageUrl = document.getString("imageUrl") ?: ""
+                    )
+                    obrasList.add(obra)
+                }
+                adapter.updateData(obrasList)
+            }
+            .addOnFailureListener { exception ->
+                Log.e("Firestore", "Erro ao buscar obras", exception)
+            }
+    }
 
-        val dialog = dialogBuilder.create()
-        dialog.setCancelable(true)
+    private fun showAddDialog() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_obra, null)
+        val nameInput = dialogView.findViewById<EditText>(R.id.editTextName)
+        val descriptionInput = dialogView.findViewById<EditText>(R.id.editTextDescription)
+        val imageUrlInput = dialogView.findViewById<EditText>(R.id.editTextImageUrl)
 
-        // Obtenha a ImageView do layout do dialog
-        val imageView = dialogView.findViewById<ImageView>(R.id.dialog_image)
-        imageView.setOnClickListener {
-            val intent = Intent(this, MainActivity12::class.java)
-            startActivity(intent)
-            dialog.dismiss()
-        }
+        AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setPositiveButton("Salvar") { _, _ ->
+                val name = nameInput.text.toString()
+                val description = descriptionInput.text.toString()
+                val imageUrl = imageUrlInput.text.toString()
 
-        dialog.show()
+                if (name.isNotBlank() && description.isNotBlank() && imageUrl.isNotBlank()) {
+                    val obra = mapOf(
+                        "name" to name,
+                        "description" to description,
+                        "imageUrl" to imageUrl
+                    )
+                    firestore.collection("obras")
+                        .add(obra)
+                        .addOnSuccessListener {
+                            loadObras()
+                            Toast.makeText(this, "Obra adicionada!", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(this, "Erro ao adicionar obra.", Toast.LENGTH_SHORT).show()
+                        }
+                } else {
+                    Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Cancelar", null)
+            .create()
+            .show()
+    }
+
+
+    private fun showEditDialog(obra: Obra) {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_obra, null)
+        val nameInput = dialogView.findViewById<EditText>(R.id.editTextName)
+        val descriptionInput = dialogView.findViewById<EditText>(R.id.editTextDescription)
+
+        nameInput.setText(obra.name)
+        descriptionInput.setText(obra.description)
+
+        AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setPositiveButton("Salvar") { _, _ ->
+                val name = nameInput.text.toString()
+                val description = descriptionInput.text.toString()
+
+                if (name.isNotBlank() && description.isNotBlank()) {
+                    val updatedObra = mapOf(
+                        "name" to name,
+                        "description" to description
+                    )
+                    firestore.collection("obras").document(obra.id)
+                        .update(updatedObra)
+                        .addOnSuccessListener {
+                            loadObras()
+                            Toast.makeText(this, "Obra atualizada!", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(this, "Erro ao atualizar obra.", Toast.LENGTH_SHORT).show()
+                        }
+                } else {
+                    Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Cancelar", null)
+            .create()
+            .show()
+    }
+
+    private fun showDeleteDialog(obra: Obra) {
+        AlertDialog.Builder(this)
+            .setMessage("Deseja excluir esta obra?")
+            .setPositiveButton("Excluir") { _, _ ->
+                firestore.collection("obras").document(obra.id)
+                    .delete()
+                    .addOnSuccessListener {
+                        loadObras()
+                        Toast.makeText(this, "Obra excluída!", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Erro ao excluir obra.", Toast.LENGTH_SHORT).show()
+                    }
+            }
+            .setNegativeButton("Cancelar", null)
+            .create()
+            .show()
     }
 }

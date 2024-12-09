@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/transparent"
+    android:gravity="center">
+
+    <!-- Campo de texto para o nome da obra -->
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Nome da Obra"
+        android:padding="12dp"
+        android:background="?android:attr/editTextBackground"
+        android:textColor="#000000"
+        android:textColorHint="#888888"
+        android:layout_marginTop="16dp" />
+
+    <!-- Campo de texto para a descrição da obra -->
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Descrição da Obra"
+        android:padding="12dp"
+        android:background="?android:attr/editTextBackground"
+        android:textColor="#000000"
+        android:textColorHint="#888888"
+        android:layout_marginTop="8dp" />
+
+    <!-- Campo de texto para a URL da imagem -->
+    <EditText
+        android:id="@+id/editTextImageUrl"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="URL da Imagem"
+        android:padding="12dp"
+        android:background="?android:attr/editTextBackground"
+        android:textColor="#000000"
+        android:textColorHint="#888888"
+        android:layout_marginTop="8dp" />
+
+    <!-- Botões de ação -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <!-- Botão de salvar -->
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Salvar"
+            android:backgroundTint="#4CAF50"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Botão de cancelar -->
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Cancelar"
+            android:backgroundTint="#F44336"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+</LinearLayout>

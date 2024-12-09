@@ -1,5 +1,6 @@
 package com.example.espacocultural
 
+import com.google.firebase.FirebaseApp
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +13,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var welcomeText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        FirebaseApp.initializeApp(this) // Inicializa o Firebase
         setContentView(R.layout.activity_main)
 
         welcomeText = findViewById(R.id.welcomeText)

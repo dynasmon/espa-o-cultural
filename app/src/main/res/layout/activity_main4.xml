@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <!-- Top Bar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -25,6 +27,7 @@
             android:src="@drawable/account_circle"
             app:tint="#FFFFFF" />
 
+
         <TextView
             android:id="@+id/visitor_title"
             android:layout_width="wrap_content"
@@ -41,6 +44,14 @@
             android:layout_marginEnd="16dp"
             android:src="@drawable/ic_brazil_flag" />
     </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tela1"
+        app:layout_constraintBottom_toTopOf="@id/bottom_bar" />
+
 
     <!-- Scroll View -->
     <ScrollView
